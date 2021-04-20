@@ -13,6 +13,8 @@
 		7A01B1AD26289C0300265E3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A01B1AB26289C0300265E3C /* Main.storyboard */; };
 		7A01B1AF26289C0300265E3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A01B1AE26289C0300265E3C /* Assets.xcassets */; };
 		7A01B1B226289C0300265E3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A01B1B026289C0300265E3C /* LaunchScreen.storyboard */; };
+		7A01B1BE26289C7F00265E3C /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A01B1BC26289C7F00265E3C /* Delm-Medium.otf */; };
+		7A01B1BF26289C7F00265E3C /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A01B1BD26289C7F00265E3C /* ThirstySoftRegular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		7A01B1AE26289C0300265E3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A01B1B126289C0300265E3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A01B1B326289C0300265E3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A01B1BC26289C7F00265E3C /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		7A01B1BD26289C7F00265E3C /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				7A01B1A726289C0300265E3C /* SceneDelegate.swift */,
 				7A01B1A926289C0300265E3C /* ViewController.swift */,
 				7A01B1AB26289C0300265E3C /* Main.storyboard */,
+				7A01B1BC26289C7F00265E3C /* Delm-Medium.otf */,
+				7A01B1BD26289C7F00265E3C /* ThirstySoftRegular.otf */,
 				7A01B1AE26289C0300265E3C /* Assets.xcassets */,
 				7A01B1B026289C0300265E3C /* LaunchScreen.storyboard */,
 				7A01B1B326289C0300265E3C /* Info.plist */,
@@ -126,6 +132,8 @@
 			files = (
 				7A01B1B226289C0300265E3C /* LaunchScreen.storyboard in Resources */,
 				7A01B1AF26289C0300265E3C /* Assets.xcassets in Resources */,
+				7A01B1BF26289C7F00265E3C /* ThirstySoftRegular.otf in Resources */,
+				7A01B1BE26289C7F00265E3C /* Delm-Medium.otf in Resources */,
 				7A01B1AD26289C0300265E3C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45CCMZA383;
 				INFOPLIST_FILE = "P4-Instagrid/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +305,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.AdrienPEREA.P4-Instagrid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,6 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45CCMZA383;
 				INFOPLIST_FILE = "P4-Instagrid/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.AdrienPEREA.P4-Instagrid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

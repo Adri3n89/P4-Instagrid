@@ -9,8 +9,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var myButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        myButton.contentVerticalAlignment = .fill
+        myButton.contentHorizontalAlignment = .fill
         // Do any additional setup after loading the view.
     }
 
