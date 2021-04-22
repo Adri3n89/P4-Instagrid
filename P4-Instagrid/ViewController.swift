@@ -20,6 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
+        picker.sourceType = .photoLibrary
         buttonPressed(myButton[1])
     }
 
@@ -74,13 +75,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func selectImage(_ sender: UIButton) {
-        switch sender.tag {
-        case 1, 2, 3, 4:
             selectedImageButton = sender
-            picker.sourceType = .camera
             present(picker, animated: true, completion: nil)
-        default:
-            return
-        }
     }
 }
