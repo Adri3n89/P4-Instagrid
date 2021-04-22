@@ -67,5 +67,9 @@
 		<string>Delm-Medium.otf</string>
 		<string>ThirstySoftRegular.otf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Utilisation de l&apos;appareil photo</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Utilisation de la galerie de photos</string>
 </dict>
 </plist>
