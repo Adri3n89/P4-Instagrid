@@ -9,16 +9,52 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var myButton: UIButton!
-    
-    
+    @IBOutlet var myButton: [UIButton]!
+    @IBOutlet weak var upLeft: UIButton!
+    @IBOutlet weak var upRight: UIButton!
+    @IBOutlet weak var downLeft: UIButton!
+    @IBOutlet weak var downRight: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        myButton.contentVerticalAlignment = .fill
-        myButton.contentHorizontalAlignment = .fill
-        // Do any additional setup after loading the view.
+        buttonPressed(myButton[1])
     }
 
+    func setupButton(sender: UIButton) {
+        removeImage()
+        sender.setImage(#imageLiteral(resourceName: "Select"), for: .normal)
+        sender.contentVerticalAlignment = .fill
+        sender.contentHorizontalAlignment = .fill
+    }
 
+    func removeImage() {
+        for button in myButton {
+            button.setImage(nil, for: .normal)
+        }
+    }
+
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            setupButton(sender: sender)
+            upLeft.isHidden = true
+            upRight.isHidden = false
+            downLeft.isHidden = false
+            downRight.isHidden = false
+        case 2:
+            setupButton(sender: sender)
+            upLeft.isHidden = false
+            upRight.isHidden = false
+            downLeft.isHidden = true
+            downRight.isHidden = false
+        case 3:
+            setupButton(sender: sender)
+            upLeft.isHidden = false
+            upRight.isHidden = false
+            downLeft.isHidden = false
+            downRight.isHidden = false
+        default:
+            return
+        }
+    }
 }
-
