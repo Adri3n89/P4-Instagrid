@@ -79,6 +79,7 @@
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.066151328379999999" green="0.40299183129999999" blue="0.61571145059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="lB9-FO-2g9" secondAttribute="trailing" constant="15" id="55z-NO-dnQ">
                                         <variation key="heightClass=compact" constant="15"/>
@@ -340,6 +341,7 @@
                     <connections>
                         <outlet property="downLeft" destination="iQR-uS-Dvg" id="VDm-cf-kk0"/>
                         <outlet property="downRight" destination="WkZ-Rs-TRc" id="os9-IA-igi"/>
+                        <outlet property="gridView" destination="f4e-uS-PU4" id="GMw-0U-xM6"/>
                         <outlet property="upLeft" destination="92b-jg-PSx" id="LR5-oB-AFk"/>
                         <outlet property="upRight" destination="Pdz-zs-K4e" id="5Rt-6W-3a0"/>
                         <outletCollection property="myButton" destination="QDR-Px-EqR" collectionClass="NSMutableArray" id="Gpu-rf-Y4C"/>
