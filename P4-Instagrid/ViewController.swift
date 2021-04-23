@@ -30,6 +30,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         upSwipeGesture.direction = .up
         self.view.addGestureRecognizer(leftSwipeGesture)
         self.view.addGestureRecognizer(upSwipeGesture)
+        print(UIDevice.current.orientation.rawValue)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        print(UIDevice.current.orientation.rawValue)
     }
 
     func sharePicture(view: UIView) -> UIImage {
@@ -57,7 +62,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @objc func upSwipeByUser(_ sender: UISwipeGestureRecognizer) {
-        if UIDevice.current.orientation.isPortrait {
+        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation == .unknown {
             UIView.animate(withDuration: 0.3) {
                 self.gridView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height * 2)
             }
