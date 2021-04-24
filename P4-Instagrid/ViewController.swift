@@ -30,11 +30,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         upSwipeGesture.direction = .up
         self.view.addGestureRecognizer(leftSwipeGesture)
         self.view.addGestureRecognizer(upSwipeGesture)
-        print(UIDevice.current.orientation.rawValue)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        print(UIDevice.current.orientation.rawValue)
     }
 
     func sharePicture(view: UIView) -> UIImage {
