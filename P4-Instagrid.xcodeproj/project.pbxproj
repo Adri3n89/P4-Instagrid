@@ -60,17 +60,41 @@
 		7A01B1A426289C0300265E3C /* P4-Instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				7A01B1A526289C0300265E3C /* AppDelegate.swift */,
-				7A01B1A726289C0300265E3C /* SceneDelegate.swift */,
-				7A01B1A926289C0300265E3C /* ViewController.swift */,
-				7A01B1AB26289C0300265E3C /* Main.storyboard */,
-				7A01B1BC26289C7F00265E3C /* Delm-Medium.otf */,
-				7A01B1BD26289C7F00265E3C /* ThirstySoftRegular.otf */,
-				7A01B1AE26289C0300265E3C /* Assets.xcassets */,
-				7A01B1B026289C0300265E3C /* LaunchScreen.storyboard */,
-				7A01B1B326289C0300265E3C /* Info.plist */,
+				7ACE6B4D26344D3400C3AA25 /* Controller */,
+				7ACE6B4C26344D0000C3AA25 /* View */,
+				7ACE6B4B26344CEB00C3AA25 /* Supporting Files */,
 			);
 			path = "P4-Instagrid";
+			sourceTree = "<group>";
+		};
+		7ACE6B4B26344CEB00C3AA25 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A01B1A726289C0300265E3C /* SceneDelegate.swift */,
+				7A01B1BD26289C7F00265E3C /* ThirstySoftRegular.otf */,
+				7A01B1AE26289C0300265E3C /* Assets.xcassets */,
+				7A01B1B326289C0300265E3C /* Info.plist */,
+				7A01B1BC26289C7F00265E3C /* Delm-Medium.otf */,
+				7A01B1A526289C0300265E3C /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ACE6B4C26344D0000C3AA25 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7A01B1B026289C0300265E3C /* LaunchScreen.storyboard */,
+				7A01B1AB26289C0300265E3C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7ACE6B4D26344D3400C3AA25 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7A01B1A926289C0300265E3C /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
