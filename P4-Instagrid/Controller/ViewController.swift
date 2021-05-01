@@ -3,7 +3,7 @@
 //  P4-Instagrid
 //
 //  Created by Adrien PEREA on 15/04/2021.
-//
+// swiftlint:disable line_length
 
 import UIKit
 
@@ -32,72 +32,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.view.addGestureRecognizer(upSwipeGesture)
     }
 
-    func sharePicture(view: UIView) -> UIImage {
-        let picture = UIGraphicsImageRenderer(bounds: view.bounds)
-        return picture.image { UIGraphicsImageRendererContext in
-            view.layer.render(in: UIGraphicsImageRendererContext.cgContext)
-        }
-    }
-
-    @objc func leftSwipeByUser(_ sender: UISwipeGestureRecognizer) {
-        if UIDevice.current.orientation.isLandscape {
-            UIView.animate(withDuration: 0.3) {
-                self.gridView.transform = CGAffineTransform(translationX: -self.view.frame.width * 2, y: 0)
-            }
-            let image = sharePicture(view: gridView)
-            let items = [image]
-            let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            present(activityVC, animated: true)
-            activityVC.completionWithItemsHandler = { (_, _, _, _) in
-                UIView.animate(withDuration: 0.3) {
-                    self.gridView.transform = .identity
-                }
-            }
-        }
-    }
-
-    @objc func upSwipeByUser(_ sender: UISwipeGestureRecognizer) {
-        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation == .unknown {
-            UIView.animate(withDuration: 0.3) {
-                self.gridView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height * 2)
-            }
-            let image = sharePicture(view: gridView)
-            let items = [image]
-            let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            present(activityVC, animated: true)
-            activityVC.completionWithItemsHandler = { (_, _, _, _) in
-                UIView.animate(withDuration: 0.3) {
-                    self.gridView.transform = .identity
-                }
-            }
-        }
-    }
-
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-// swiftlint:disable:next line_length
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        if let photo = info[.editedImage] as? UIImage {
-            selectedImageButton?.setImage(photo, for: .normal)
-            selectedImageButton?.imageView?.contentMode = .scaleAspectFill
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-
-    func setupButton(sender: UIButton) {
-        removeImage()
-        sender.setImage(#imageLiteral(resourceName: "Select"), for: .normal)
-        sender.contentVerticalAlignment = .fill
-        sender.contentHorizontalAlignment = .fill
-    }
-
-    func removeImage() {
-        for button in myButton {
-            button.setImage(nil, for: .normal)
-        }
-    }
-
     @IBAction func buttonPressed(_ sender: UIButton) {
         switch sender.tag {
         case 1:
@@ -122,10 +56,71 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             return
         }
     }
-
     @IBAction func selectImage(_ sender: UIButton) {
             selectedImageButton = sender
             present(picker, animated: true, completion: nil)
+    }
+
+    @objc private func leftSwipeByUser(_ sender: UISwipeGestureRecognizer) {
+        if UIDevice.current.orientation.isLandscape {
+            UIView.animate(withDuration: 0.3) {
+                self.gridView.transform = CGAffineTransform(translationX: -self.view.frame.width * 2, y: 0)
+            }
+            let image = sharePicture(view: gridView)
+            let items = [image]
+            let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            present(activityVC, animated: true)
+            activityVC.completionWithItemsHandler = { (_, _, _, _) in
+                UIView.animate(withDuration: 0.3) {
+                    self.gridView.transform = .identity
+                }
+            }
+        }
+    }
+    @objc private func upSwipeByUser(_ sender: UISwipeGestureRecognizer) {
+        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation == .unknown {
+            UIView.animate(withDuration: 0.3) {
+                self.gridView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height * 2)
+            }
+            let image = sharePicture(view: gridView)
+            let items = [image]
+            let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            present(activityVC, animated: true)
+            activityVC.completionWithItemsHandler = { (_, _, _, _) in
+                UIView.animate(withDuration: 0.3) {
+                    self.gridView.transform = .identity
+                }
+            }
+        }
+    }
+
+    internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let photo = info[.editedImage] as? UIImage {
+            selectedImageButton?.setImage(photo, for: .normal)
+            selectedImageButton?.imageView?.contentMode = .scaleAspectFill
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    private func setupButton(sender: UIButton) {
+        removeImage()
+        sender.setImage(#imageLiteral(resourceName: "Select"), for: .normal)
+        sender.contentVerticalAlignment = .fill
+        sender.contentHorizontalAlignment = .fill
+    }
+    private func removeImage() {
+        for button in myButton {
+            button.setImage(nil, for: .normal)
+        }
+    }
+    private func sharePicture(view: UIView) -> UIImage {
+        let picture = UIGraphicsImageRenderer(bounds: view.bounds)
+        return picture.image { UIGraphicsImageRendererContext in
+            view.layer.render(in: UIGraphicsImageRendererContext.cgContext)
+        }
     }
 
 }
