@@ -24,9 +24,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         buttonPressed(myButton[1])
-        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipeByUser(_:)))
+        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeByUser(_:)))
         leftSwipeGesture.direction = .left
-        let upSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(upSwipeByUser(_:)))
+        let upSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeByUser(_:)))
         upSwipeGesture.direction = .up
         self.view.addGestureRecognizer(leftSwipeGesture)
         self.view.addGestureRecognizer(upSwipeGesture)
@@ -61,35 +61,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             present(picker, animated: true, completion: nil)
     }
 
-    @objc private func leftSwipeByUser(_ sender: UISwipeGestureRecognizer) {
-        if UIDevice.current.orientation.isLandscape {
+    @objc private func swipeByUser(_ sender: UISwipeGestureRecognizer) {
+        if UIDevice.current.orientation.isLandscape && sender.direction == .left {
             UIView.animate(withDuration: 0.3) {
                 self.gridView.transform = CGAffineTransform(translationX: -self.view.frame.width * 2, y: 0)
             }
-            let image = sharePicture(view: gridView)
-            let items = [image]
-            let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            present(activityVC, animated: true)
-            activityVC.completionWithItemsHandler = { (_, _, _, _) in
-                UIView.animate(withDuration: 0.3) {
-                    self.gridView.transform = .identity
-                }
-            }
-        }
-    }
-    @objc private func upSwipeByUser(_ sender: UISwipeGestureRecognizer) {
-        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation == .unknown {
+            shareImage()
+        } else if (UIDevice.current.orientation.isPortrait || UIDevice.current.orientation == .unknown) && sender.direction == .up {
             UIView.animate(withDuration: 0.3) {
                 self.gridView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height * 2)
             }
-            let image = sharePicture(view: gridView)
-            let items = [image]
-            let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            present(activityVC, animated: true)
-            activityVC.completionWithItemsHandler = { (_, _, _, _) in
-                UIView.animate(withDuration: 0.3) {
-                    self.gridView.transform = .identity
-                }
+            shareImage()
+        }
+    }
+
+    private func shareImage() {
+        let image = convertPicture(view: gridView)
+        let items = [image]
+        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activityVC, animated: true)
+        activityVC.completionWithItemsHandler = { (_, _, _, _) in
+            UIView.animate(withDuration: 0.3) {
+                self.gridView.transform = .identity
             }
         }
     }
@@ -116,7 +109,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             button.setImage(nil, for: .normal)
         }
     }
-    private func sharePicture(view: UIView) -> UIImage {
+    private func convertPicture(view: UIView) -> UIImage {
         let picture = UIGraphicsImageRenderer(bounds: view.bounds)
         return picture.image { UIGraphicsImageRendererContext in
             view.layer.render(in: UIGraphicsImageRendererContext.cgContext)
