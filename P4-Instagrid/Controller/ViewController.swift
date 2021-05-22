@@ -10,10 +10,7 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var myButton: [UIButton]!
-    @IBOutlet weak var upLeft: UIButton!
-    @IBOutlet weak var upRight: UIButton!
-    @IBOutlet weak var downLeft: UIButton!
-    @IBOutlet weak var downRight: UIButton!
+    @IBOutlet var myGridButton: [UIButton]!
     @IBOutlet weak var gridView: UIView!
     var picker: UIImagePickerController = UIImagePickerController()
     var selectedImageButton: UIButton?
@@ -33,29 +30,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
+        setupPressed(sender: sender)
         switch sender.tag {
-        case 1:
-            setupButton(sender: sender)
-            upLeft.isHidden = true
-            upRight.isHidden = false
-            downLeft.isHidden = false
-            downRight.isHidden = false
-        case 2:
-            setupButton(sender: sender)
-            upLeft.isHidden = false
-            upRight.isHidden = false
-            downLeft.isHidden = true
-            downRight.isHidden = false
-        case 3:
-            setupButton(sender: sender)
-            upLeft.isHidden = false
-            upRight.isHidden = false
-            downLeft.isHidden = false
-            downRight.isHidden = false
+        case 1: myGridButton[0].isHidden = true
+        case 2: myGridButton[2].isHidden = true
         default:
             return
         }
     }
+
     @IBAction func selectImage(_ sender: UIButton) {
             selectedImageButton = sender
             present(picker, animated: true, completion: nil)
@@ -90,6 +73,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let photo = info[.editedImage] as? UIImage {
             selectedImageButton?.setImage(photo, for: .normal)
@@ -104,11 +88,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         sender.contentVerticalAlignment = .fill
         sender.contentHorizontalAlignment = .fill
     }
+
     private func removeImage() {
         for button in myButton {
             button.setImage(nil, for: .normal)
         }
     }
+
+    private func showAllGrid() {
+        for buttons in myGridButton {
+            buttons.isHidden = false
+        }
+    }
+
+    private func setupPressed(sender: UIButton) {
+        setupButton(sender: sender)
+        showAllGrid()
+    }
+
     private func convertPicture(view: UIView) -> UIImage {
         let picture = UIGraphicsImageRenderer(bounds: view.bounds)
         return picture.image { UIGraphicsImageRendererContext in
