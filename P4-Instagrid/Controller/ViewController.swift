@@ -80,15 +80,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     private func setupButton(sender: UIButton) {
-        removeImage()
-        sender.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
-        sender.contentVerticalAlignment = .fill
-        sender.contentHorizontalAlignment = .fill
+        deselectButton()
+        selectedButton(button: sender)
     }
 
-    private func removeImage() {
+    private func selectedButton(button: UIButton) {
+        button.isSelected = true
+        button.setImage(#imageLiteral(resourceName: "Selected"), for: .selected)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+    }
+
+    private func deselectButton() {
         for button in myButton {
-            button.setImage(nil, for: .normal)
+            button.isSelected = false
         }
     }
 
