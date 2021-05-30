@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupImageForSelected()
         initPicker()
         initGesture()
         buttonPressed(myButton[1])
@@ -25,7 +26,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     /// set the grid we want by hidding a button in the gridView
     @IBAction func buttonPressed(_ sender: UIButton) {
-        setupPressed(sender: sender)
+        resetGridAndButtons()
+        sender.isSelected = true
         switch sender.tag {
         case 1: myGridButton[0].isHidden = true
         case 2: myGridButton[2].isHidden = true
@@ -81,16 +83,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    private func setupPressed(sender: UIButton) {
-        resetGridAndButtons()
-        selectedButton(button: sender)
-    }
-
-    private func selectedButton(button: UIButton) {
-        button.isSelected = true
-        button.setImage(#imageLiteral(resourceName: "Selected"), for: .selected)
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
+    private func setupImageForSelected() {
+        for button in myButton {
+            button.setImage(#imageLiteral(resourceName: "Selected"), for: UIControl.State.selected)
+            button.contentVerticalAlignment = .fill
+            button.contentHorizontalAlignment = .fill
+        }
     }
 
     private func resetGridAndButtons() {
