@@ -23,6 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonPressed(myButton[1])
     }
 
+    /// set the grid we want by hidding a button in the gridView
     @IBAction func buttonPressed(_ sender: UIButton) {
         setupPressed(sender: sender)
         switch sender.tag {
@@ -38,6 +39,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             present(picker, animated: true, completion: nil)
     }
 
+    /// check the orientation device and the swipe direction to show the good animmation
     @objc private func swipeByUser(_ sender: UISwipeGestureRecognizer) {
         if UIDevice.current.orientation.isLandscape && sender.direction == .left {
             UIView.animate(withDuration: duration) {
@@ -79,8 +81,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    private func setupButton(sender: UIButton) {
-        deselectButton()
+    private func setupPressed(sender: UIButton) {
+        resetGridAndButtons()
         selectedButton(button: sender)
     }
 
@@ -91,21 +93,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         button.contentHorizontalAlignment = .fill
     }
 
-    private func deselectButton() {
+    private func resetGridAndButtons() {
         for button in myButton {
             button.isSelected = false
         }
-    }
-
-    private func showAllGrid() {
-        for buttons in myGridButton {
-            buttons.isHidden = false
+        for button in myGridButton {
+            button.isHidden = false
         }
-    }
-
-    private func setupPressed(sender: UIButton) {
-        setupButton(sender: sender)
-        showAllGrid()
     }
 
     private func convertPicture(view: UIView) -> UIImage {
