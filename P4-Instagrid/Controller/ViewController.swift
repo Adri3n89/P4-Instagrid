@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet var myButton: [UIButton]!
     @IBOutlet var myGridButton: [UIButton]!
@@ -106,6 +106,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             view.layer.render(in: UIGraphicsImageRendererContext.cgContext)
         }
     }
+}
+
+// MARK: - Extension UIImagePickerControllerDelegate
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
