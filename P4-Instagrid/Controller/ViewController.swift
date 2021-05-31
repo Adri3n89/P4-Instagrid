@@ -9,8 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet var myButton: [UIButton]!
-    @IBOutlet var myGridButton: [UIButton]!
+    @IBOutlet var layoutButton: [UIButton]!
+    @IBOutlet var imageGridButton: [UIButton]!
     @IBOutlet weak var gridView: UIView!
     var picker: UIImagePickerController = UIImagePickerController()
     var selectedImageButton: UIButton?
@@ -21,16 +21,16 @@ class ViewController: UIViewController {
         setupImageForSelected()
         initPicker()
         initGesture()
-        buttonPressed(myButton[1])
+        setGridToLayoutSelected(layoutButton[1])
     }
 
     /// set the grid we want by hidding a button in the gridView
-    @IBAction func buttonPressed(_ sender: UIButton) {
+    @IBAction func setGridToLayoutSelected(_ sender: UIButton) {
         resetGridAndButtons()
         sender.isSelected = true
         switch sender.tag {
-        case 1: myGridButton[0].isHidden = true
-        case 2: myGridButton[2].isHidden = true
+        case 1: imageGridButton[0].isHidden = true
+        case 2: imageGridButton[2].isHidden = true
         default:
             return
         }
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
     }
 
     private func setupImageForSelected() {
-        for button in myButton {
+        for button in layoutButton {
             button.setImage(#imageLiteral(resourceName: "Selected"), for: UIControl.State.selected)
             button.contentVerticalAlignment = .fill
             button.contentHorizontalAlignment = .fill
@@ -92,10 +92,10 @@ class ViewController: UIViewController {
     }
 
     private func resetGridAndButtons() {
-        for button in myButton {
+        for button in layoutButton {
             button.isSelected = false
         }
-        for button in myGridButton {
+        for button in imageGridButton {
             button.isHidden = false
         }
     }

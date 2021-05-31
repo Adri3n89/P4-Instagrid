@@ -116,7 +116,7 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="Layout 1"/>
                                         <connections>
-                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FiN-fk-umQ"/>
+                                            <action selector="setGridToLayoutSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FiN-fk-umQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVn-32-kLa">
@@ -136,14 +136,14 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYG-tO-SQM"/>
+                                            <action selector="setGridToLayoutSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYG-tO-SQM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUG-Zl-76d">
                                         <rect key="frame" x="259.5" y="0.0" width="114.5" height="114.5"/>
                                         <state key="normal" backgroundImage="Layout 3"/>
                                         <connections>
-                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zS2-qW-vnP"/>
+                                            <action selector="setGridToLayoutSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zS2-qW-vnP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -360,13 +360,13 @@
                     </view>
                     <connections>
                         <outlet property="gridView" destination="f4e-uS-PU4" id="GMw-0U-xM6"/>
-                        <outletCollection property="myButton" destination="QDR-Px-EqR" collectionClass="NSMutableArray" id="Gpu-rf-Y4C"/>
-                        <outletCollection property="myButton" destination="NVn-32-kLa" collectionClass="NSMutableArray" id="4Ik-YZ-p7k"/>
-                        <outletCollection property="myButton" destination="MUG-Zl-76d" collectionClass="NSMutableArray" id="9iN-n4-wJq"/>
-                        <outletCollection property="myGridButton" destination="92b-jg-PSx" collectionClass="NSMutableArray" id="i0Z-HW-ljc"/>
-                        <outletCollection property="myGridButton" destination="Pdz-zs-K4e" collectionClass="NSMutableArray" id="WNG-fJ-Nij"/>
-                        <outletCollection property="myGridButton" destination="iQR-uS-Dvg" collectionClass="NSMutableArray" id="7MN-UT-Lqn"/>
-                        <outletCollection property="myGridButton" destination="WkZ-Rs-TRc" collectionClass="NSMutableArray" id="ztC-RV-SM6"/>
+                        <outletCollection property="layoutButton" destination="QDR-Px-EqR" collectionClass="NSMutableArray" id="Gpu-rf-Y4C"/>
+                        <outletCollection property="layoutButton" destination="NVn-32-kLa" collectionClass="NSMutableArray" id="4Ik-YZ-p7k"/>
+                        <outletCollection property="layoutButton" destination="MUG-Zl-76d" collectionClass="NSMutableArray" id="9iN-n4-wJq"/>
+                        <outletCollection property="imageGridButton" destination="92b-jg-PSx" collectionClass="NSMutableArray" id="i0Z-HW-ljc"/>
+                        <outletCollection property="imageGridButton" destination="Pdz-zs-K4e" collectionClass="NSMutableArray" id="WNG-fJ-Nij"/>
+                        <outletCollection property="imageGridButton" destination="iQR-uS-Dvg" collectionClass="NSMutableArray" id="7MN-UT-Lqn"/>
+                        <outletCollection property="imageGridButton" destination="WkZ-Rs-TRc" collectionClass="NSMutableArray" id="ztC-RV-SM6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
